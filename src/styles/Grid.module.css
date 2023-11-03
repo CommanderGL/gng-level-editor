@@ -1,0 +1,9 @@
+.grid {
+    display: grid;
+    grid-template-columns: repeat(15, 1fr);
+    gap: 0;
+    aspect-ratio: 1 / 1;
+    background: url("/background.png");
+    background-size: cover;
+    image-rendering: pixelated;
+}
