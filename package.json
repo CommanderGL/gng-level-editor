@@ -5,7 +5,7 @@
   "type": "module",
   "scripts": {
     "dev": "bun --bun x vite",
-    "build": "bun x vue-tsc && bun bun --bun x vite build",
+    "build": "bun x vue-tsc && bun --bun x vite build",
     "preview": "bun --bun x vite preview"
   },
   "dependencies": {
