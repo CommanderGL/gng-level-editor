@@ -9,6 +9,6 @@ import './styles/index.css';
 
 library.add(faMinus, faPlus);
 
-createApp(App)
+export const app = createApp(App)
     .component('font-awesome-icon', FontAwesomeIcon)
     .mount('#app')

@@ -6,5 +6,5 @@ export default {
 };
 </script>
 <template>
-    <Editor />
+    <Editor ref="editor" />
 </template>

@@ -22,7 +22,10 @@ export default {
             });
         },
         onLevelChange(e: Event) {
-            this.setLevel((e.target as HTMLInputElement).valueAsNumber);
+            const input = e.target as HTMLInputElement;
+
+            if (input.valueAsNumber < 0 || input.valueAsNumber > levels.length - 1) input.valueAsNumber = selectedLevel.index;
+            this.setLevel(input.valueAsNumber);
         }
     }
 };
