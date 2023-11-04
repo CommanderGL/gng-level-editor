@@ -1,7 +1,7 @@
 <script lang="ts">
 import { defineComponent } from 'vue';
 import GridItem from './GridItem.vue';
-import { selectedTile, entityPos, tiles } from '../tiles';
+import { selectedTile, levels, selectedLevel } from '../tiles';
 import styles from '../styles/Grid.module.css';
 
 export default defineComponent({
@@ -9,8 +9,8 @@ export default defineComponent({
         return {
             styles,
             selectedTile,
-            entityPos,
-            tiles
+            levels,
+            selectedLevel
         }
     },
     methods: {
@@ -27,7 +27,7 @@ export default defineComponent({
 <template>
     <div :class="styles.grid" @mousedown="edited">
         <GridItem
-            v-for="(tile, i) in tiles"
+            v-for="(tile, i) in levels[selectedLevel.index]"
             :key="i"
             :id="tile"
             ref="tile"

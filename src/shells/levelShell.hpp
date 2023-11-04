@@ -1,0 +1,1 @@
+new Level({$PLAYER_X,$PLAYER_Y},{$BOX_X,$BOX_Y},{$LEVEL_DATA})

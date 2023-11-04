@@ -1,7 +1,9 @@
 <script lang="ts">
 import styles from '../styles/Editor.module.css';
 import Grid from './Grid.vue';
+import LevelSelector from './LevelSelector.vue';
 import { tileColors, selectedTile, selectedEntity } from '../tiles'
+import { exportLevels } from '../compile';
 
 export default {
     data() {
@@ -25,9 +27,13 @@ export default {
             selectedEntity.player = false;
             selectedEntity.box = false;
             selectedTile.setTileId(tile);
-        }
+        },
+        exportLevels
     },
-    components: { Grid }
+    components: {
+        Grid,
+        LevelSelector
+    }
 };
 </script>
 <template>
@@ -36,7 +42,11 @@ export default {
         <div style="background: #d3b083;" @click="selectEntity('box')"></div>
         <div v-for="tileColor in tileColors" :style="`background: ${tileColor};`" @click="selectTile(tileColors.indexOf(tileColor))"></div>
     </div>
+    <div :class="styles.fileActions">
+        <button @click="exportLevels">Export</button>
+        <LevelSelector />
+    </div>
     <div :class="styles.editor" @mousedown="onDown" @mouseup="selectedTile.setDrawing(false)" @mouseleave="selectedTile.setDrawing(false)">
-        <Grid />
+        <Grid ref="grid" />
     </div>
 </template>

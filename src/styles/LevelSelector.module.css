@@ -1,0 +1,36 @@
+.levelSelector {
+    display: flex;
+    flex-direction: row;
+    gap: 0.5rem;
+    align-items: center;
+    height: 100%;
+}
+
+.btn {
+    height: 100%;
+    aspect-ratio: 1;
+    padding: 0;
+    border: none;
+    background: #fff;
+    cursor: pointer;
+    border-radius: 0.25rem;
+    transition: all 150ms ease-in-out;
+}
+
+.btn:hover {
+    background: #eee;
+}
+
+.btn:active {
+    background: #ddd;
+}
+
+.in {
+    width: 3rem;
+    appearance: textfield;
+}
+
+.in::-webkit-outer-spin-button, .in::-webkit-inner-spin-button {
+    appearance: none;
+    margin: 0;
+}

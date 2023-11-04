@@ -9,6 +9,9 @@
     "preview": "bun --bun x vite preview"
   },
   "dependencies": {
+    "@fortawesome/fontawesome-svg-core": "^6.4.2",
+    "@fortawesome/free-solid-svg-icons": "^6.4.2",
+    "@fortawesome/vue-fontawesome": "latest-3",
     "vue": "^3.3.4"
   },
   "devDependencies": {
