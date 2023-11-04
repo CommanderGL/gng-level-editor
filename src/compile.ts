@@ -15,15 +15,18 @@ export const downloadFile = (filename: string, content: string) => {
     document.body.removeChild(tmpLink);
 };
 
+const SCREEN_START_X = 187;
+const TILE_SIZE = 32;
+
 export const compile = () => {
     let compiledLevels = "";
 
     levels.forEach((level, index) => {
         let levelOut = levelShell;
-        levelOut = levelOut.replace('$PLAYER_X', JSON.stringify(entityPos[index].player.x));
-        levelOut = levelOut.replace('$PLAYER_Y', JSON.stringify(entityPos[index].player.y));
-        levelOut = levelOut.replace('$BOX_X', JSON.stringify(entityPos[index].box.x));
-        levelOut = levelOut.replace('$BOX_Y', JSON.stringify(entityPos[index].box.y));
+        levelOut = levelOut.replace('$PLAYER_X', JSON.stringify(entityPos[index].player.x * TILE_SIZE + SCREEN_START_X));
+        levelOut = levelOut.replace('$PLAYER_Y', JSON.stringify(entityPos[index].player.y * TILE_SIZE));
+        levelOut = levelOut.replace('$BOX_X', JSON.stringify(entityPos[index].box.x * TILE_SIZE + SCREEN_START_X));
+        levelOut = levelOut.replace('$BOX_Y', JSON.stringify(entityPos[index].box.y * TILE_SIZE));
         levelOut = levelOut.replace('$LEVEL_DATA', level.toString());
 
         compiledLevels += levelOut;
