@@ -27,6 +27,10 @@ jobs:
               uses: actions/setup-node@v3
               with:
                 node-version: 21.x
+            - name: Setup PNPM
+              uses: pnpm/action-setup@v2
+              with:
+                version: 8
             - name: Install Dependencies
               run: pnpm i
             - name: Build
