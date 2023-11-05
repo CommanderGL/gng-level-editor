@@ -4,20 +4,23 @@
   "version": "0.0.0",
   "type": "module",
   "scripts": {
-    "dev": "bun --bun x vite",
-    "build": "bun x vue-tsc && bun --bun x vite build",
-    "preview": "bun --bun x vite preview"
+    "dev": "vite",
+    "build": "vue-tsc && vite build",
+    "preview": "vite preview"
   },
   "dependencies": {
     "@fortawesome/fontawesome-svg-core": "^6.4.2",
     "@fortawesome/free-solid-svg-icons": "^6.4.2",
     "@fortawesome/vue-fontawesome": "latest-3",
+    "sharp": "^0.32.6",
     "vue": "^3.3.4"
   },
   "devDependencies": {
+    "@vite-pwa/assets-generator": "^0.0.10",
     "@vitejs/plugin-vue": "^4.2.3",
     "typescript": "^5.0.2",
     "vite": "^4.4.5",
+    "vite-plugin-pwa": "^0.16.7",
     "vue-tsc": "^1.8.5"
   }
 }
