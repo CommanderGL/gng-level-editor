@@ -1,9 +1,9 @@
 .editor {
     background: #000;
-    width: 100%;
     display: flex;
     justify-content: center;
     aspect-ratio: 16 / 9;
+    margin: auto;
 }
 
 .tileSelect {

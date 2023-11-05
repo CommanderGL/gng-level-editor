@@ -1,11 +1,37 @@
 * {
     margin: 0;
+    background: #fff;
 }
 
-body {
+body, #app {
     height: 100vh;
+    background: #000;
 }
 
-button {
+button, input {
+    height: 100%;
+    border: none;
+    background: #fff;
+    border-radius: 0.25rem;
+    transition: all 150ms ease-in-out;
     cursor: pointer;
+}
+
+button > * {
+    background: transparent;
+}
+
+button:hover {
+    background: #eee;
+}
+
+button:active {
+    background: #ddd;
+}
+
+input {
+    cursor: text;
+    height: 1rem;
+    padding: 0.5rem;
+    text-align: center;
 }

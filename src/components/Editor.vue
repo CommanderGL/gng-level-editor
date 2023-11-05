@@ -28,6 +28,15 @@ export default {
             selectedEntity.box = false;
             selectedTile.setTileId(tile);
         },
+        onResize() {
+            const elem = this.$refs.editor as HTMLDivElement;
+            const rect = elem.getBoundingClientRect();
+            if (rect.y + rect.height > window.screen.height) {
+                elem.style.height = "75vh";
+                return;
+            }
+            elem.style.height = "";
+        },
         compile,
         save,
         load
@@ -35,7 +44,11 @@ export default {
     components: {
         Grid,
         LevelSelector
-    }
+    },
+    mounted() {
+        window.addEventListener('resize', this.onResize);
+        this.onResize();
+    },
 };
 </script>
 <template>
@@ -50,7 +63,7 @@ export default {
         <button @click="load">Load</button>
         <LevelSelector />
     </div>
-    <div :class="styles.editor" @mousedown="onDown" @mouseup="selectedTile.setDrawing(false)" @mouseleave="selectedTile.setDrawing(false)">
+    <div :class="styles.editor" @mousedown="onDown" @mouseup="selectedTile.setDrawing(false)" @mouseleave="selectedTile.setDrawing(false)" ref="editor">
         <Grid ref="grid" />
     </div>
 </template>
