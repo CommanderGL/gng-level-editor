@@ -61,6 +61,7 @@ export default {
         <button @click="compile">Export</button>
         <button @click="save">Save</button>
         <button @click="load">Load</button>
+        <div class="divider" />
         <LevelSelector />
     </div>
     <div :class="styles.editor" @mousedown="onDown" @mouseup="selectedTile.setDrawing(false)" @mouseleave="selectedTile.setDrawing(false)" ref="editor">
