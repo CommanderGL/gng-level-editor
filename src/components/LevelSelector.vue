@@ -84,11 +84,11 @@ export default {
         <button @click="removeLevel">Remove Level</button>
         <div class="divider" />
         <button :class="styles.btn" @click="setLevel(selectedLevel.index - 1)">
-            <font-awesome-icon icon="fa-solid fa-minus" />
+            <font-awesome-icon icon="fa-solid fa-arrow-left" />
         </button>
         <input type="number" :value="selectedLevel.index" :class="styles.in" @change="onLevelChange" />
         <button :class="styles.btn" @click="setLevel(selectedLevel.index + 1)">
-            <font-awesome-icon icon="fa-solid fa-plus" />
+            <font-awesome-icon icon="fa-solid fa-arrow-right" />
         </button>
     </div>
 </template>
