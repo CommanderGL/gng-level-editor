@@ -80,14 +80,20 @@ export default {
 </script>
 <template>
     <div :class="styles.levelSelector">
-        <button @click="newLevel">New Level</button>
-        <button @click="removeLevel">Remove Level</button>
+        <button @click="newLevel" title="Create a new level.">New Level</button>
+        <button @click="removeLevel" title="Remove the current level.">Remove Level</button>
         <div class="divider" />
-        <button :class="styles.btn" @click="setLevel(selectedLevel.index - 1)">
+        <button :class="styles.btn" @click="setLevel(selectedLevel.index - 1)" title="Switch to the previous level.">
             <font-awesome-icon icon="fa-solid fa-arrow-left" />
         </button>
-        <input type="number" :value="selectedLevel.index" :class="styles.in" @change="onLevelChange" />
-        <button :class="styles.btn" @click="setLevel(selectedLevel.index + 1)">
+        <input
+            type="number"
+            :value="selectedLevel.index"
+            :class="styles.in"
+            @change="onLevelChange"
+            title="The current selected level."
+        />
+        <button :class="styles.btn" @click="setLevel(selectedLevel.index + 1)" title="Switch to the next level.">
             <font-awesome-icon icon="fa-solid fa-arrow-right" />
         </button>
     </div>

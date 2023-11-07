@@ -58,9 +58,9 @@ export default {
         <div v-for="tileColor in tileColors" :style="`background: ${tileColor};`" @click="selectTile(tileColors.indexOf(tileColor))"></div>
     </div>
     <div :class="styles.fileActions">
-        <button @click="compile">Export</button>
-        <button @click="save">Save</button>
-        <button @click="load">Load</button>
+        <button @click="compile" title="Export to hpp file.">Export</button>
+        <button @click="save" title="Save to json file.">Save</button>
+        <button @click="load" title="Load previously saved json file.">Load</button>
         <div class="divider" />
         <LevelSelector />
     </div>
