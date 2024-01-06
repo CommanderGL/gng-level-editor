@@ -3,11 +3,11 @@ import App from './App.vue';
 
 import { library } from '@fortawesome/fontawesome-svg-core';
 import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome';
-import { faArrowLeft, faArrowRight } from '@fortawesome/free-solid-svg-icons';
+import { faArrowLeft, faArrowRight, faCaretDown } from '@fortawesome/free-solid-svg-icons';
 
 import './styles/index.css';
 
-library.add(faArrowLeft, faArrowRight);
+library.add(faArrowLeft, faArrowRight, faCaretDown);
 
 export const app = createApp(App)
     .component('font-awesome-icon', FontAwesomeIcon)

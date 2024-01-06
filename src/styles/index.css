@@ -36,10 +36,18 @@ input {
     text-align: center;
 }
 
-.divider {
+.vertical-divider {
     height: 80%;
     background: #ccc;
     width: 1px;
     margin-top: auto;
     margin-bottom: auto;
+}
+
+.horizontal-divider {
+    width: 80%;
+    background: #ccc;
+    height: 1px;
+    margin-left: auto;
+    margin-right: auto;
 }

@@ -82,7 +82,7 @@ export default {
     <div :class="styles.levelSelector">
         <button @click="newLevel" title="Create a new level.">New Level</button>
         <button @click="removeLevel" title="Remove the current level.">Remove Level</button>
-        <div class="divider" />
+        <div class="vertical-divider" />
         <button :class="styles.btn" @click="setLevel(selectedLevel.index - 1)" title="Switch to the previous level.">
             <font-awesome-icon icon="fa-solid fa-arrow-left" />
         </button>

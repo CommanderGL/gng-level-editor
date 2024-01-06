@@ -1,7 +1,7 @@
 <script lang="ts">
 import { defineComponent, toRaw } from 'vue';
-import { entityPos, selectedEntity, selectedTile, tileColors, levels, selectedLevel } from '../tiles'
-import styles from '../styles/GridItem.module.css'
+import { entityPos, selectedEntity, selectedTile, tiles, levels, selectedLevel, Vector2 } from '../tiles'
+import { TILE_SIZE } from '../compile';
 
 export default defineComponent({
     props: {
@@ -13,8 +13,9 @@ export default defineComponent({
     data() {
         return {
             localId: this.id,
-            styles,
-            selectedTile
+            selectedTile,
+            tiles,
+            TILE_SIZE
         }
     },
     methods: {
@@ -24,7 +25,7 @@ export default defineComponent({
                 this.$.vnode.key == entityPos[selectedLevel.index].player.x + entityPos[selectedLevel.index].player.y * 15
             ) return; */
 
-            let oldPos: { x: number, y: number } | null = null;
+            let oldPos: Vector2| null = null;
             if (selectedEntity.player == true) {
                 oldPos = structuredClone(toRaw(entityPos[selectedLevel.index].player));
 
@@ -80,7 +81,7 @@ export default defineComponent({
                 return;
             }
             (this.$refs.item as HTMLDivElement).style.opacity = "1";
-            (this.$refs.item as HTMLDivElement).style.background = tileColors[this.localId];
+            (this.$refs.item as HTMLDivElement).style.background = tiles[this.localId].color;
         },
         onEnter() {
             if (selectedTile.drawing) this.updateId(selectedTile.tileId);
@@ -103,8 +104,14 @@ export default defineComponent({
 </script>
 <template>
     <div
-        :class="styles.item"
         ref="item"
         @mousedown="updateId(selectedTile.tileId);"
-        @mouseenter="onEnter" />
+        @mouseenter="onEnter"
+        :style="{
+            width: `${tiles[localId].size.x * 100}%`,
+            height: `${tiles[localId].size.y * 100}%`,
+            position: 'relative',
+            left: `${tiles[localId].offset.x * 100}%`,
+            top: `${tiles[localId].offset.y * 100}%`
+        }" />
 </template>

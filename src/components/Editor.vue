@@ -2,15 +2,17 @@
 import styles from '../styles/Editor.module.css';
 import Grid from './Grid.vue';
 import LevelSelector from './LevelSelector.vue';
-import { tileColors, selectedTile, selectedEntity } from '../tiles'
+import { tiles, selectedTile, selectedEntity, tileDropdowns, dropDownContainsTile } from '../tiles'
 import { compile, save, load } from '../compile';
+import TileDropdown from './TileDropdown.vue';
 
 export default {
     data() {
         return {
             styles,
-            tileColors,
-            selectedTile
+            tiles,
+            selectedTile,
+            tileDropdowns
         };
     },
     methods: {
@@ -39,11 +41,13 @@ export default {
         },
         compile,
         save,
-        load
+        load,
+        dropDownContainsTile
     },
     components: {
         Grid,
-        LevelSelector
+        LevelSelector,
+        TileDropdown
     },
     mounted() {
         window.addEventListener('resize', this.onResize);
@@ -53,15 +57,35 @@ export default {
 </script>
 <template>
     <div :class="styles.tileSelect">
-        <div style="background: #0079f1;" @click="selectEntity('player')"></div>
-        <div style="background: #d3b083;" @click="selectEntity('box')"></div>
-        <div v-for="tileColor in tileColors" :style="`background: ${tileColor};`" @click="selectTile(tileColors.indexOf(tileColor))"></div>
+        <div style="background: #0079f1;" @click="selectEntity('player')" title="Player" />
+        <div class="vertical-divider" />
+        <div style="background: #d3b083;" @click="selectEntity('box')" title="Box" />
+        <template v-for="tile, index in tiles">
+            <template v-if="!dropDownContainsTile(index)">
+                <div class="vertical-divider" />
+                <div>
+                    <div
+                        :style="{
+                            background: tile.color,
+                            aspectRatio: `${tile.size.x} / ${tile.size.y}`,
+                            height: `${tile.size.y * 100}%`,
+                            left: `calc(${tile.offset.x} * 6rem)`,
+                            top: `calc(${tile.offset.y} * 6rem)`
+                        }"
+                        @click="selectTile(index)"
+                        :title="tile.tooltip"
+                    />
+                </div>
+            </template>
+        </template>
+        
+        <TileDropdown v-for="tileDropdown in tileDropdowns" :tile-dropdown="tileDropdown" />
     </div>
     <div :class="styles.fileActions">
         <button @click="compile" title="Export to hpp file.">Export</button>
         <button @click="save" title="Save to json file.">Save</button>
         <button @click="load" title="Load previously saved json file.">Load</button>
-        <div class="divider" />
+        <div class="vertical-divider" />
         <LevelSelector />
     </div>
     <div :class="styles.editor" @mousedown="onDown" @mouseup="selectedTile.setDrawing(false)" @mouseleave="selectedTile.setDrawing(false)" ref="editor">

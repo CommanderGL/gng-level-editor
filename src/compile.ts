@@ -2,7 +2,7 @@ import { app } from './main';
 import levelShell from './shells/levelShell.hpp?raw';
 import levelsShell from './shells/levelsShell.hpp?raw';
 
-import { entityPos, levels, selectedEntity, selectedLevel, setEntityPos, setLevels } from './tiles';
+import { Vector2, entityPos, levels, selectedEntity, selectedLevel, setEntityPos, setLevels } from './tiles';
 
 export const downloadFile = (filename: string, content: string, mime: string) => {
     const tmpLink = document.createElement('a');
@@ -17,7 +17,7 @@ export const downloadFile = (filename: string, content: string, mime: string) =>
 };
 
 const SCREEN_START_X = 187;
-const TILE_SIZE = 32;
+export const TILE_SIZE = 32;
 
 export const compile = () => {
     let compiledLevels = "";
@@ -52,14 +52,8 @@ export const save = () => {
 type LoadedType = {
     levels: number[][],
     entityPos: {
-        player: {
-            x: number,
-            y: number
-        },
-        box: {
-            x: number,
-            y: number
-        }
+        player: Vector2,
+        box: Vector2
     }[]
 };
 

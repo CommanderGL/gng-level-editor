@@ -1,0 +1,24 @@
+.caret {
+    margin-top: auto;
+    margin-bottom: auto;
+    cursor: pointer;
+    font-size: 1.25rem;
+
+    transition: transform 250ms ease-in-out;
+}
+
+.caret:hover {
+    transform: rotate(-90deg);
+}
+
+.dropdown {
+    border-radius: 0.5rem;
+    border: none;
+    gap: 0.5rem;
+    box-shadow: 2px 5px 10px 2px #000;
+    z-index: 500;
+}
+
+.dropdownItem {
+    cursor: pointer;
+}
