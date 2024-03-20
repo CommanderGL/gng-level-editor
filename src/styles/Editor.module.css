@@ -26,6 +26,9 @@
 
 .tileSelect > div > div {
     position: relative;
+    image-rendering: pixelated;
+    image-rendering: -moz-crip-edges;
+    image-rendering: crisp-edges;
 }
 
 .fileActions {

@@ -20,11 +20,6 @@ export default defineComponent({
     },
     methods: {
         updateId(tileId: number) {
-            /* if (
-                this.$.vnode.key == entityPos[selectedLevel.index].box.x + entityPos[selectedLevel.index].box.y * 15 ||
-                this.$.vnode.key == entityPos[selectedLevel.index].player.x + entityPos[selectedLevel.index].player.y * 15
-            ) return; */
-
             let oldPos: Vector2| null = null;
             if (selectedEntity.player == true) {
                 oldPos = structuredClone(toRaw(entityPos[selectedLevel.index].player));
@@ -81,7 +76,8 @@ export default defineComponent({
                 return;
             }
             (this.$refs.item as HTMLDivElement).style.opacity = "1";
-            (this.$refs.item as HTMLDivElement).style.background = tiles[this.localId].color;
+            (this.$refs.item as HTMLDivElement).style.background = tiles[this.localId].color != undefined ? tiles[this.localId].color : `url(/gng-level-editor/textures/${tiles[this.localId].texture}.png)`;
+            (this.$refs.item as HTMLDivElement).style.backgroundSize = "cover";
         },
         onEnter() {
             if (selectedTile.drawing) this.updateId(selectedTile.tileId);

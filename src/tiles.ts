@@ -1,30 +1,25 @@
 import { reactive } from "vue";
 
-/* export const tileColors = [
-    "#5c58a3",
-    "#696783",
-    "#3b8a3f",
-
-];
-
-export const tileTooltips = [
-    "Air",
-    "Wall",
-    "Goal"
-] */
-
-
 export type Vector2 = {
     x: number,
     y: number
 };
 
-export type Tile = {
-    color: string,
+type BaseTile = {
     tooltip: string,
     size: Vector2,
     offset: Vector2
 };
+
+type ColoredTile = BaseTile & {
+  color: string
+};
+
+type TexturedTile = BaseTile & {
+  texture: string
+};
+
+export type Tile = ColoredTile | TexturedTile;
 
 export const tiles: Tile[] = [
     {
@@ -111,6 +106,54 @@ export const tiles: Tile[] = [
             x: 0,
             y: 0.5
         }
+    },
+    {
+      texture: "conveyer_left",
+      tooltip: "Coveyer - Left",
+      size: {
+        x: 1,
+        y: 1
+      },
+      offset: {
+        x: 0,
+        y: 0
+      } 
+    },
+    {
+      texture: "conveyer_right",
+      tooltip: "Coveyer - Right",
+      size: {
+        x: 1,
+        y: 1
+      },
+      offset: {
+        x: 0,
+        y: 0
+      } 
+    },
+    {
+      texture: "conveyer_up",
+      tooltip: "Coveyer - Up",
+      size: {
+        x: 1,
+        y: 1
+      },
+      offset: {
+        x: 0,
+        y: 0
+      } 
+    },
+    {
+      texture: "conveyer_down",
+      tooltip: "Coveyer - Down",
+      size: {
+        x: 1,
+        y: 1
+      },
+      offset: {
+        x: 0,
+        y: 0
+      } 
     }
 ];
 
@@ -120,7 +163,13 @@ export const tileDropdowns: number[][] = [
         4,
         5,
         6
-    ]
+    ],
+    [
+      7,
+      8,
+      9,
+      10
+    ] 
 ];
 
 export const dropDownContainsTile = (tile: number) => {

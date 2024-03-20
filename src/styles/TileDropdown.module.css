@@ -19,6 +19,9 @@
     z-index: 500;
 }
 
-.dropdownItem {
+.img {
     cursor: pointer;
-}
+    image-rendering: pixelated;
+    image-rendering: -moz-crisp-edges;
+    image-rendering: crisp-edge;
+  }

@@ -66,7 +66,8 @@ export default {
                 <div>
                     <div
                         :style="{
-                            background: tile.color,
+                            background: tile.color != undefined ? tile.color : `url(/gng-level-editor/textures/${tile.texture}.png)`,
+                            backgroundSize: 'cover',
                             aspectRatio: `${tile.size.x} / ${tile.size.y}`,
                             height: `${tile.size.y * 100}%`,
                             left: `calc(${tile.offset.x} * 6rem)`,
