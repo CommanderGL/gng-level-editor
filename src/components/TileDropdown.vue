@@ -2,7 +2,7 @@
 import styles from '../styles/TileDropdown.module.css';
 import { PropType } from 'vue';
 import { TILE_SIZE } from '../compile';
-import { tiles, selectedEntity, selectedTile} from '../tiles';
+import { tiles, selectedEntity, selectedTile, ColoredTile, TexturedTile } from '../tiles';
 
 export default {
     props: {
@@ -45,12 +45,12 @@ export default {
 <template>
     <div class="vertical-divider" />
     <div
-        v-if="tiles[tileDropdown[0]].color != undefined"
+        v-if="(tiles[tileDropdown[0]] as ColoredTile).color != undefined"
         @click="active = !active"
         :style="{
             width: `${tiles[tileDropdown[0]].size.x * parentHeight}px`,
             height: `${tiles[tileDropdown[0]].size.y * parentHeight}px`,
-            background: tiles[tileDropdown[0]].color,
+            background: (tiles[tileDropdown[0]] as ColoredTile).color,
             marginLeft: `${tiles[tileDropdown[0]].offset.x * parentHeight}px`,
             marginTop: `${tiles[tileDropdown[0]].offset.y * parentHeight}px`,
             aspectRatio: `${tiles[tileDropdown[0]].size.x * parentHeight} / ${tiles[tileDropdown[0]].size.y * parentHeight}`,
@@ -61,7 +61,7 @@ export default {
     <img
         v-else
         @click="active = !active"
-        :src="`/gng-level-editor/textures/${tiles[tileDropdown[0]].texture}.png`"
+        :src="`/gng-level-editor/textures/${(tiles[tileDropdown[0]] as TexturedTile).texture}.png`"
         :style="{
             width: `${tiles[tileDropdown[0]].size.x * parentHeight}px`,
             height: `${tiles[tileDropdown[0]].size.y * parentHeight}px`,
@@ -88,12 +88,12 @@ export default {
     >
         <template v-for="item, index in tileDropdown">
             <div
-                v-if="tiles[item].color != undefined"
+                v-if="(tiles[item] as ColoredTile).color != undefined"
                 :class="styles.img"
                 :style="{
                     width: `${tiles[item].size.x * parentHeight}px`,
                     height: `${tiles[item].size.y * parentHeight}px`,
-                    background: tiles[item].color,
+                    background: (tiles[item] as ColoredTile).color,
                     marginLeft: `${tiles[item].offset.x * parentHeight}px`,
                     marginTop: index == 0 ? `${tiles[item].offset.y * parentHeight}px` : `calc(${tiles[item].offset.y * parentHeight}px + 0.5rem)`,
                     aspectRatio: `${tiles[item].size.x * parentHeight} / ${tiles[item].size.y * parentHeight}`
@@ -104,7 +104,7 @@ export default {
             <img
                 v-else
                 :class="styles.img"
-                :src="`/gng-level-editor/textures/${tiles[item].texture}.png`"
+                :src="`/gng-level-editor/textures/${(tiles[item] as TexturedTile).texture}.png`"
                 :style="{
                     width: `${tiles[item].size.x * parentHeight}px`,
                     height: `${tiles[item].size.y * parentHeight}px`,

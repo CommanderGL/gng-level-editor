@@ -2,7 +2,7 @@
 import styles from '../styles/Editor.module.css';
 import Grid from './Grid.vue';
 import LevelSelector from './LevelSelector.vue';
-import { tiles, selectedTile, selectedEntity, tileDropdowns, dropDownContainsTile } from '../tiles'
+import { tiles, selectedTile, selectedEntity, tileDropdowns, dropDownContainsTile, ColoredTile, TexturedTile } from '../tiles'
 import { compile, save, load } from '../compile';
 import TileDropdown from './TileDropdown.vue';
 
@@ -66,7 +66,7 @@ export default {
                 <div>
                     <div
                         :style="{
-                            background: tile.color != undefined ? tile.color : `url(/gng-level-editor/textures/${tile.texture}.png)`,
+                            background: (tile as ColoredTile).color != undefined ? (tile as ColoredTile).color : `url(/gng-level-editor/textures/${(tile as TexturedTile).texture}.png)`,
                             backgroundSize: 'cover',
                             aspectRatio: `${tile.size.x} / ${tile.size.y}`,
                             height: `${tile.size.y * 100}%`,

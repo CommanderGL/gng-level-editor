@@ -1,6 +1,6 @@
 <script lang="ts">
 import { defineComponent, toRaw } from 'vue';
-import { entityPos, selectedEntity, selectedTile, tiles, levels, selectedLevel, Vector2 } from '../tiles'
+import { entityPos, selectedEntity, selectedTile, tiles, levels, selectedLevel, Vector2, ColoredTile, TexturedTile } from '../tiles'
 import { TILE_SIZE } from '../compile';
 
 export default defineComponent({
@@ -76,7 +76,7 @@ export default defineComponent({
                 return;
             }
             (this.$refs.item as HTMLDivElement).style.opacity = "1";
-            (this.$refs.item as HTMLDivElement).style.background = tiles[this.localId].color != undefined ? tiles[this.localId].color : `url(/gng-level-editor/textures/${tiles[this.localId].texture}.png)`;
+            (this.$refs.item as HTMLDivElement).style.background = (tiles[this.localId] as ColoredTile).color != undefined ? (tiles[this.localId] as ColoredTile).color : `url(/gng-level-editor/textures/${(tiles[this.localId] as TexturedTile).texture}.png)`;
             (this.$refs.item as HTMLDivElement).style.backgroundSize = "cover";
         },
         onEnter() {

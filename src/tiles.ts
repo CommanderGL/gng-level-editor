@@ -11,11 +11,11 @@ type BaseTile = {
     offset: Vector2
 };
 
-type ColoredTile = BaseTile & {
+export type ColoredTile = BaseTile & {
   color: string
 };
 
-type TexturedTile = BaseTile & {
+export type TexturedTile = BaseTile & {
   texture: string
 };
 
